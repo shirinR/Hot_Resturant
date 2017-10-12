@@ -1,10 +1,15 @@
-$('#submit').on('click', function(){
+$('#submit').on('click', function(event){
+  event.preventDefault();
 
-  var userInput = [{
+  var newcharacter = {
     name: $('#name').val(),
     phone: $('#phone').val(),
     email: $('#email').val(),
-    unique_id: $('#uid').val()
-  }];
+    uniqueId: $('#uid').val()
+  };
 
+  $.post('/api/tables', newcharacter).done(function(data){
+    console.log(data);
+    alert('Adding new reservation...');
+  });
 });

@@ -20,12 +20,16 @@ app.get("/", function(req,res){
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/tables", function(req,res){
+app.get("/reserve", function(req,res){
   res.sendFile(path.join(__dirname, "make_reservation.html"));
 });
 
-app.get("/viewtable", function(req,res){
+app.get("/tables", function(req,res){
   res.sendFile(path.join(__dirname, "view_tables.html"));
+});
+
+app.get("/app.js", function(req,res){
+  res.sendFile(path.join(__dirname, "app.js"));
 });
 
 app.post("/api/tables", function(req, res){
@@ -36,7 +40,7 @@ app.post("/api/tables", function(req, res){
   res.json(newcharacter);
 });
 
-app.post("/api/waitlist", function(req, res){
+app.post("/api/reserve", function(req, res){
   var newcharacter = req.body;
   newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
   console.log(newcharacter);
